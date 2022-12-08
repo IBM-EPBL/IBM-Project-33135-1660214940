@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-expense-tracker
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flask-expense-tracker
+  template:
+    metadata:
+      labels:
+        app: flask-expense-tracker
+
+    spec:
+      containers:
+        - name: j007
+          image: docker.io/jaihindh07/expensetracker:latest
+          ports:
+            - containerPort: 5000
+              protocol: TCP
